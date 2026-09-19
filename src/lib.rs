@@ -19,7 +19,7 @@ impl Hello {
     }
 
     #[must_use]
-    pub fn  hello_world() -> String {
+    pub fn hello_world() -> String {
         Hello::hello("world")
     }
 }
