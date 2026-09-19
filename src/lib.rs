@@ -9,7 +9,7 @@ pub struct Hello;
 /// use worlds_simplest_kata::Hello;
 ///
 /// let hello = Hello::hello("everyone".to_string());
-/// assert_eq!("Hello, everyone.", hello);
+/// assert_eq!("Hello, everyone!", hello);
 ///
 /// ```
 impl Hello {
