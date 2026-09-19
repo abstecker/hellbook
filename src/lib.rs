@@ -14,11 +14,11 @@ pub struct Hello;
 /// ```
 impl Hello {
     pub fn hello(name: String) -> String {
-        format!("Hello,  {}!", name)
+        format!("Hello, {}!", name)
     }
 
     pub fn  hello_world() -> String {
-        Hello::hello("wirld!".to_string())
+        Hello::hello("world".to_string())
     }
 }
 
