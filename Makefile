@@ -44,7 +44,7 @@ test:
 
 # CI.yaml: job `clippy`.
 clippy:
-	cargo clippy -- -Dclippy::all -Dclippy::pedantic
+	cargo clippy --all-targets -- -Dclippy::all -Dclippy::pedantic
 
 # CI.yaml: job `fmt`. `--check` reports and fails; it changes nothing.
 fmt:

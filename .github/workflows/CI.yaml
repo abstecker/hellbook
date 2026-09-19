@@ -29,7 +29,6 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -37,12 +36,11 @@ jobs:
         with:
           toolchain: stable
           components: clippy
-      - run: cargo clippy -- -Dclippy::all -Dclippy::pedantic
+      - run: cargo clippy --all-targets -- -Dclippy::all -Dclippy::pedantic
 
   fmt:
     name: Fmt
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
