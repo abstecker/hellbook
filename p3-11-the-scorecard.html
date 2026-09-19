@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Scorecard - Hell in a Cell: Rust Edition</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Two programmers walk in, one walks out. A broken Hello, World!, a merciless CI gate, and the AI agents that tried to beat it.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/step-meta.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hell in a Cell: Rust Edition</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-scorecard"><a class="header" href="#the-scorecard">The Scorecard</a></h1>
+<p>Here's every defect in the kata, in one place. Check it against the number
+you wrote down at the end of <em>The Library</em>.</p>
+<p>The <strong>Judge</strong> column says who catches it. "—" means nobody does; only a human
+reading carefully will ever find it. Those are the ones that separate a green
+build from a finished job.</p>
+<h2 id="in-the-ring"><a class="header" href="#in-the-ring">In the ring</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Defect</th><th>Where</th><th>Judge</th><th>Round</th></tr></thead><tbody>
+<tr><td>1</td><td><code>rust-version</code> 1.72.1 predates the 2024 edition</td><td><code>Cargo.toml</code></td><td>Cargo</td><td>1</td></tr>
+<tr><td>2</td><td>…and the fix must not exceed 1.85.0, the CI matrix floor</td><td><code>Cargo.toml</code></td><td>Test (matrix)</td><td>1</td></tr>
+<tr><td>3</td><td><code>hello__world</code> promises <code>&amp;'static str</code>, returns a <code>String</code></td><td><code>lib.rs</code></td><td>Compiler (E0308)</td><td>2</td></tr>
+<tr><td>4</td><td><code>hello__world</code> isn't snake case</td><td><code>lib.rs</code></td><td>Compiler, <em>only</em> with <code>-Dwarnings</code></td><td>3</td></tr>
+<tr><td>5</td><td>…and the rename has three call sites: definition, test, <code>main.rs</code></td><td><code>lib.rs</code>, <code>main.rs</code></td><td>Compiler</td><td>3</td></tr>
+<tr><td>6</td><td>Two spaces in <code>"Hello,  {}!"</code></td><td><code>lib.rs</code></td><td>Unit test</td><td>4</td></tr>
+<tr><td>7</td><td><code>wirld</code></td><td><code>lib.rs</code></td><td>Unit test</td><td>4</td></tr>
+<tr><td>8</td><td>Double <code>!</code>: caller and callee both punctuate</td><td><code>lib.rs</code></td><td>Unit test</td><td>4</td></tr>
+<tr><td>9</td><td>Doc test expects <code>"Hello, everyone."</code></td><td><code>lib.rs</code></td><td>Doc test</td><td>5</td></tr>
+<tr><td>10</td><td>Neither function is <code>#[must_use]</code></td><td><code>lib.rs</code></td><td>Clippy pedantic</td><td>6</td></tr>
+<tr><td>11</td><td><code>hello</code> takes <code>String</code> by value, only borrows it</td><td><code>lib.rs</code></td><td>Clippy pedantic</td><td>6</td></tr>
+<tr><td>12</td><td><code>format!("…{}…", name)</code> instead of <code>{name}</code></td><td><code>lib.rs</code></td><td>Clippy pedantic</td><td>6</td></tr>
+<tr><td>13</td><td><code>fn  hello__world</code> has two spaces</td><td><code>lib.rs</code></td><td>Fmt</td><td>7</td></tr>
+<tr><td>14</td><td><code>[Helo]</code> is a broken intra-doc link</td><td><code>lib.rs</code></td><td>Doc</td><td>8</td></tr>
+<tr><td>15</td><td>The type's docs are attached to the <code>impl</code>, not the type</td><td><code>lib.rs</code></td><td>—</td><td>8</td></tr>
+<tr><td>16</td><td>Doc prose says <code>hello</code> takes a <code>String</code> (after Round 6)</td><td><code>lib.rs</code></td><td>—</td><td>6</td></tr>
+<tr><td>17</td><td>Clippy and Fmt are skipped on pull requests</td><td><code>CI.yaml</code></td><td>—</td><td>9</td></tr>
+<tr><td>18</td><td>Clippy never lints the test code</td><td><code>CI.yaml</code></td><td>—</td><td>9</td></tr>
+<tr><td>19</td><td><code>repository</code> points at the old kata</td><td><code>Cargo.toml</code></td><td>—</td><td>10</td></tr>
+</tbody></table>
+</div>
+<h2 id="out-of-the-ring"><a class="header" href="#out-of-the-ring">Out of the ring</a></h2>
+<p>Not replayed in this book, but worth a judge's eye. See Round 10.</p>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Defect</th><th>Where</th></tr></thead><tbody>
+<tr><td>20</td><td><code>Cargo.lock</code> is git-ignored</td><td><code>.gitignore</code></td></tr>
+<tr><td>21</td><td>Dev container: <code>ubuntu:18.04</code>, a retired extension ID, a dead setting</td><td><code>.devcontainer/</code></td></tr>
+<tr><td>22</td><td><code>cargo test --all</code> uses a deprecated alias</td><td><code>CI.yaml</code></td></tr>
+<tr><td>23</td><td><code>dtolnay/rust-toolchain@master</code> isn't pinned</td><td><code>CI.yaml</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="reading-the-card"><a class="header" href="#reading-the-card">Reading the card</a></h2>
+<p><strong>Some defects hide behind others.</strong> You can't see #4 until #3 is fixed,
+because the compiler stops at the first error. You can't see #9 until the
+code compiles under the referee's flags. You can't see the Clippy findings
+until the tests pass, because <code>make ci</code> stops at the first failing job. The
+defects come in layers, and you peel them one at a time. That's why the
+advice all along has been to fix one thing and re-run.</p>
+<p><strong>Some defects only exist on the referee's machine.</strong> #4 is a warning on your
+laptop and an error in CI. #2 is invisible to anyone who only tests on their
+own compiler.</p>
+<p><strong>Some defects no machine will find.</strong> Rows 15–19 pass every judge the kata
+has. That's the lesson under all the other lessons: the tools raise the floor,
+and you still have to read the code.</p>
+<blockquote>
+<p>✍️ <strong>EDITOR:</strong> A scoring scale for human readers, if you want one. For
+example: 1–9 "Contender," 10–14 "Champion," all 19 "Undisputed." Part IV
+uses the same numbers for the machines.</p>
+</blockquote>
+<blockquote>
+<p>✍️ <strong>EDITOR:</strong> Did I miss one? Check this list against the defects you
+planted on purpose.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="p3-10-round-10-the-undercard.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="p4-01-rules-of-engagement.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="p3-10-round-10-the-undercard.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="p4-01-rules-of-engagement.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
